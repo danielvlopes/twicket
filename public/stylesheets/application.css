@@ -10,10 +10,16 @@ hr.thin {
   margin:5px 0 5px 0;
 }
 
+h2.not-found{
+  font-size:18px;
+  color:#FFF;
+  text-align:center;
+}
+
 #wrapper{
-  min-height: 100%;
+  min-height: 93%;
   height: auto !important;
-  height: 100%;
+  height: 93%;
   margin: 0 auto 0;
 }
 
@@ -28,7 +34,7 @@ hr.thin {
   width:361px;
   height:350px;
   display:block;
-  margin:80px auto 30px auto;
+  margin:50px auto 30px auto;
 }
 
 #input{
@@ -131,7 +137,6 @@ hr.thin {
   font-size:11px;
   color:#95c8e7;
   width:300px;
-  height: 4em;
 }
 
 #footer .area{

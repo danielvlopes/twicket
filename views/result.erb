@@ -1,25 +1,32 @@
 <%= partial(:input) %>
 
-<div class="result">
-  <h2>And the winner is...</h2>
-  <hr class="thin"/>
+<% unless @promo.empty? %>
+  <div class="result">
+    <h2>And the winner is...</h2>
+    <hr class="thin"/>
 
-  <p>
-    <span class="label">Winner</span>
-    <span class="value"><%= @promo.winner.name %></span>
-  </p>
+    <p>
+      <span class="label">Winner</span>
+      <span class="value"><%= @promo.winner.name %></span>
+    </p>
 
-  <hr class="thin"/>
+    <hr class="thin"/>
 
-  <p>
-    <span class="label">Twitte</span>
-    <span class="value"><%= @promo.winner.twitte %></span>
-  </p>
+    <p>
+      <span class="label">Twitte</span>
+      <span class="value"><%= @promo.winner.twitte %></span>
+    </p>
 
-  <hr class="thin"/>
-  <p>
-    <span class="label">Twittes</span>
-    <span class="value" style="width:100px;"><%= @promo.twittes.size %></span>
-  </p>
-  <hr class="thin"/>
-</div>
+    <hr class="thin"/>
+    <p>
+      <span class="label">Twittes</span>
+      <span class="value" style="width:100px;"><%= @promo.twittes.size %></span>
+    </p>
+    <hr class="thin"/>
+  </div>
+<% else %>
+  <h2 class="not-found">
+    Sorry, your egg has no birds. 
+    We don't found the hashtag <%= @promo.hashtag %>
+  </h2>
+<% end %>

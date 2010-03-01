@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'net/http'
 require 'json/pure'
+require 'cgi'
 
 module Twitter
   class Raffle
@@ -15,6 +16,10 @@ module Twitter
 
     def hashtag=(value)
       @hashtag = (value =~ /^#/) ? value : "##{value}"
+    end
+    
+    def empty?
+      @twittes.empty?
     end
 
   private
