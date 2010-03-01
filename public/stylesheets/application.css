@@ -1,6 +1,7 @@
 @import "global.css";
 body{
   background: #00425a url(../images/background.jpg) no-repeat center top;
+  color:#FFF;
 }
 
 hr.thin {
@@ -35,6 +36,12 @@ h2.not-found{
   height:350px;
   display:block;
   margin:50px auto 30px auto;
+}
+
+#help{
+  width:550px;
+  margin:40px auto;
+  text-align:center;
 }
 
 #input{
