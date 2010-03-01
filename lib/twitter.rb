@@ -6,7 +6,7 @@ require 'cgi'
 module Twitter
   class Raffle
     BASE_URI = 'search.twitter.com'
-    
+
     attr_reader :twittes, :hashtag, :winner
 
     def initialize(tag)
@@ -19,12 +19,12 @@ module Twitter
     def hashtag=(value)
       @hashtag = (value =~ /^#/) ? value : "##{value}"
     end
-    
+
     def empty?
       @twittes.empty?
     end
 
-  private
+    private
     def search_url
       "/search.json?rpp=100&q=" + CGI::escape(hashtag)
     end
@@ -37,13 +37,19 @@ module Twitter
       response =   Net::HTTP.new(BASE_URI).get2(url, { 'User-Agent' => 'twicket' } )
       result   = JSON.parse(response.body)
 
-      result["results"].each { |r| @twittes << r }
+      result["results"].each { |t| @twittes << t if valid?(t) }
       next_page(result["next_page"]) if result["next_page"]
 
     rescue JSON::ParserError => e
       raise "Json parse error, probably corrupt data."
     rescue => e
       raise "Fail to receive twitter data."
+    end
+
+    def valid?(twitte)
+      @twittes.each do |t|
+        return false if t['from_user'] == twitte['from_user']
+      end
     end
   end
 
