@@ -14,7 +14,7 @@ module Twitter
       @twittes = []
       self.hashtag = tag
       retrieve(search_url)
-      @winner = Winner.new(@twittes[rand(@twittes.size)])
+      # @winner = Winner.new(@twittes[rand(@twittes.size)])
     end
 
     def hashtag=(value)
@@ -36,13 +36,13 @@ module Twitter
 
     def retrieve(url)
       response = self.class.get(url)
-      response["results"].each { |r| @twittes << r }
-      next_page(response["next_page"]) if response["next_page"]
-    rescue JSON::ParserError => e
-      raise "Json parse error, probably corrupt data."
-    rescue => e
-      raise "Fail to receive twitter data."
-    end
+      # response["results"].each { |r| @twittes << r }
+      # next_page(response["next_page"]) if response["next_page"]
+    # rescue JSON::ParserError => e
+    #   raise "Json parse error, probably corrupt data."
+    # rescue => e
+    #   raise "Fail to receive twitter data."
+    # end
   end
 
   class Winner
