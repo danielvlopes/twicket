@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'lib/partial'
-require 'lib/twitter_raffle'
+require 'lib/twitter'
 
 include Sinatra::Partials
 include Twitter
