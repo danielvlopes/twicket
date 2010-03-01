@@ -34,12 +34,13 @@ module Twitter
     end
 
     def retrieve(url)
-      response =   Net::HTTP.new(BASE_URI).get2(url, { 'User-Agent' => 'twicket' } )
+      response = Net::HTTP.new(BASE_URI).get2(url, { 'User-Agent' => 'twicket' } )
       result   = JSON.parse(response.body)
 
-      result["results"].each { |t| @twittes << t if valid?(t) }
-      next_page(result["next_page"]) if result["next_page"]
-
+      unless result["results"].nil?
+        result["results"].each { |t| @twittes << t if valid?(t) }
+        next_page(result["next_page"]) if result["next_page"]
+      end
     rescue JSON::ParserError => e
       raise "Json parse error, probably corrupt data."
     rescue => e
@@ -51,6 +52,7 @@ module Twitter
         return false if t['from_user'] == twitte['from_user']
       end
     end
+
   end
 
   class Winner
