@@ -42,7 +42,7 @@ module Twitter
     #   raise "Json parse error, probably corrupt data."
     # rescue => e
     #   raise "Fail to receive twitter data."
-    # end
+    end
   end
 
   class Winner
