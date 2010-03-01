@@ -1,0 +1,30 @@
+/* Contains styles for common elements: forms, tables, etc */
+* {
+  padding:0;
+  margin:0;
+}
+
+html, body { height: 100%; }
+
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address { margin:1em 0; }
+
+body{ font-family: Arial, verdana, sans-serif;}
+li, dd { margin-left:5%; }
+fieldset { padding: .5em; }
+select option{ padding:0 5px; }
+
+.access{ display:none; } /* For accessibility related elements */
+.clear{ clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden; }
+a{ outline:none; }
+a img{ border:none; }
+
+.middle     { vertical-align:middle; }
+.left       { float:left; }
+.right      { float:right; }
+.clear      { clear:both; }
+.txt_center { text-align:center !important; }
+.txt_right  { text-align:right !important; }
+.txt_left   { text-align:left !important; }
+.odd        { background-color:#F1F5FA; }
+.even       { background-color:#FFF; }
+.highlight  { background-color:#FFFFCC; }

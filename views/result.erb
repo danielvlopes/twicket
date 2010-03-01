@@ -1,0 +1,25 @@
+<%= partial(:input) %>
+
+<div class="result">
+  <h2>And the winner is...</h2>
+  <hr class="thin"/>
+
+  <p>
+    <span class="label">Winner</span>
+    <span class="value"><%= @promo.winner.name %></span>
+  </p>
+
+  <hr class="thin"/>
+
+  <p>
+    <span class="label">Twitte</span>
+    <span class="value"><%= @promo.winner.twitte %></span>
+  </p>
+
+  <hr class="thin"/>
+  <p>
+    <span class="label">Twittes</span>
+    <span class="value" style="width:100px;"><%= @promo.twittes.size %></span>
+  </p>
+  <hr class="thin"/>
+</div>
