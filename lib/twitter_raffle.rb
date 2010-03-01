@@ -1,26 +1,25 @@
 require 'rubygems'
-require 'httparty'
+require 'net/http'
 require 'json/pure'
 require 'cgi'
 
 module Twitter
   class Raffle
-    include HTTParty
-    base_uri 'search.twitter.com'
-
+    BASE_URI = 'search.twitter.com'
+    
     attr_reader :twittes, :hashtag, :winner
 
     def initialize(tag)
       @twittes = []
       self.hashtag = tag
       retrieve(search_url)
-      # @winner = Winner.new(@twittes[rand(@twittes.size)])
+      @winner = Winner.new(@twittes[rand(@twittes.size)])
     end
 
     def hashtag=(value)
       @hashtag = (value =~ /^#/) ? value : "##{value}"
     end
-
+    
     def empty?
       @twittes.empty?
     end
@@ -31,17 +30,20 @@ module Twitter
     end
 
     def next_page(page)
-      retrieve "/search.json#{page}"
+      retrieve("/search.json#{page}")
     end
 
     def retrieve(url)
-      response = self.class.get(url)
-      # response["results"].each { |r| @twittes << r }
-      # next_page(response["next_page"]) if response["next_page"]
-    # rescue JSON::ParserError => e
-    #   raise "Json parse error, probably corrupt data."
-    # rescue => e
-    #   raise "Fail to receive twitter data."
+      response =   Net::HTTP.new(BASE_URI).get2(url, { 'User-Agent' => 'twicket' } )
+      result   = JSON.parse(response.body)
+
+      result["results"].each { |r| @twittes << r }
+      next_page(result["next_page"]) if result["next_page"]
+
+    rescue JSON::ParserError => e
+      raise "Json parse error, probably corrupt data."
+    rescue => e
+      raise "Fail to receive twitter data."
     end
   end
 
