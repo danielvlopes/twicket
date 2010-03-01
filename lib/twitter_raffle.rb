@@ -38,10 +38,10 @@ module Twitter
       response = self.class.get(url)
       response["results"].each { |r| @twittes << r }
       next_page(response["next_page"]) if response["next_page"]
-    rescue JSON::ParserError => e
-      raise "Json parse error, probably corrupt data."
-    rescue => e
-      raise "Fail to receive twitter data."
+    # rescue JSON::ParserError => e
+    #   raise "Json parse error, probably corrupt data."
+    # rescue => e
+    #   raise "Fail to receive twitter data."
     end
   end
 
