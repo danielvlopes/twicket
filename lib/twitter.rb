@@ -38,7 +38,7 @@ module Twitter
       result   = JSON.parse(response.body)
 
       unless result["results"].nil?
-        result["results"].each { |t| @twittes << t if valid?(t) }
+        result["results"].each { |t| @twittes << t  if valid?(t) }
         next_page(result["next_page"]) if result["next_page"]
       end
     rescue JSON::ParserError => e
