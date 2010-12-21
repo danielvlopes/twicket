@@ -1,4 +1,7 @@
-require 'twicket.rb'
+require 'rubygems'
+require 'bundler/setup'
+require 'sinatra'
+require './twicket'
 
 set :environment, :production
 set :run, false
