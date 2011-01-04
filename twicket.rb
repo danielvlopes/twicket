@@ -1,7 +1,5 @@
-require 'rubygems'
-require 'sinatra'
-require 'lib/partial'
-require 'lib/twitter'
+require './lib/partial'
+require './lib/twitter'
 
 include Sinatra::Partials
 include Twitter

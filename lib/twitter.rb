@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'net/http'
-require 'json/pure'
+require 'json'
 require 'cgi'
 
 module Twitter
