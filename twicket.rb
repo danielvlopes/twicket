@@ -4,7 +4,6 @@ require './lib/twitter'
 include Sinatra::Partials
 include Twitter
 
-# set utf-8 for outgoing
 before do
   headers "Content-Type" => "text/html; charset=utf-8"
 end
